@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    ".svelte-kit": true,
+    "package-lock.json": true,
+    ".gitignore": true,
+    ".prettierrc": true,
+    ".npmrc": true,
+    ".prettierignore": true,
+    ".vscode": true,
+    "node_modules": true
+  }
+}

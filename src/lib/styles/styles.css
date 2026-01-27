@@ -1,0 +1,171 @@
+/*
+just @import '@fontsource-variable/ibm-plex-sans'; seems to do the trick
+*/
+@import '@fontsource-variable/ibm-plex-sans';
+
+/* for headings and stuff */
+@import '@fontsource-variable/syne';
+
+:root {
+	/* primary colors */
+	--primary-color: #fd5e53; /* Updated primary color */
+	--light-primary-color: #ff8073; /* Lighter shade of #fd5e53 */
+	--lightest-primary-color: #ffd2cc; /* Adjusted lighter shade */
+
+	--primary-color-opacity: rgb(253 94 83 / 95%);
+	--primary-color-mid-opacity: rgb(253 94 83 / 20%);
+	--primary-color-high-opacity: rgb(253 94 83 / 10%);
+
+	/* white */
+	--talkpath-white: #fff;
+
+	/*grays*/
+	--talkpath-text-gray: #2c3e50; /* light gray */
+	--talkpath-muted-text-gray: #7f8c8d; /* light gray */
+
+	/* light bg color */
+	--light-bg-color: #ffd2cc;
+
+	/*
+	
+	start
+	for status boxes 
+	
+
+	*/
+	--success-light-bg-color: #fcfff5;
+	--success-light-txt-color: #2c662d;
+	--success-light-b-txt-color: #1a531b;
+
+	--danger-light-bg-color: #fff6f6;
+	--danger-light-txt-color: #9f3a38;
+	--danger-light-b-txt-color: #912d2b;
+
+	--info-light-bg-color: #f8ffff;
+	--info-light-txt-color: #276f86;
+	--info-light-b-txt-color: #0e566c;
+
+	--warning-light-bg-color: #fffaf3;
+	--warning-light-txt-color: #573a08;
+	--warning-light-b-txt-color: #794b02;
+	/*
+
+	end of status boxes
+
+	*/
+
+	--light-select-color: #bfd8ac;
+
+	--active-color: #047362;
+
+	--default-text-color: #0e1116;
+
+	--card-border-color: #ccc;
+
+	--mobile-max-width: 600px;
+
+	--danger-color: #ca1010;
+
+	/* some box model properties */
+	/* so it matches tailwind */
+	--border-radius: calc(0.6rem - 2px); /*6px;*/
+	--border-color: #8f8f9d;
+	--muted-border-color: #e0e0e0;
+
+	--mobile-breakpoint: 768px;
+	--public-page-side-padding: 15px;
+	--my-profile-page-side-padding: 15px;
+}
+
+html {
+	background: var(--light-bg-color);
+}
+
+body {
+	background: var(--talkpath-white);
+
+	display: flex;
+	flex-direction: column;
+	font-family: 'IBM Plex Sans Variable', sans-serif;
+	color: var(--default-text-color);
+	font-size: 17.64px;
+	min-height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
+	/* padding: 0 0.5em;*/
+	min-width: 300px;
+}
+
+body.no-scroll {
+	overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	outline: 0;
+}
+
+*::selection {
+	color: var(--default-text-color);
+	background-color: var(--primary-color-high-opacity);
+}
+
+a {
+	text-decoration: none;
+	color: var(--default-text-color);
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p {
+	margin: 0;
+}
+
+input {
+	background: var(--talkpath-white);
+}
+
+input:focus,
+input:active {
+	background: var(--talkpath-white);
+}
+
+/* autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-internal-autofill-selected {
+	-webkit-text-fill-color: var(--talkpath-white);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border: 1px solid var(--border-color);
+	-webkit-text-fill-color: var(--default-text-color);
+	-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+	box-shadow: 0 0 0px 1000px #fdf6f1 inset;
+	transition: background-color 5000s ease-in-out 0s;
+	color: var(--default-text-color);
+	background: var(--talkpath-white);
+}
+
+.primary-outline-btn {
+	border: 1px solid var(--primary-color);
+	color: var(--primary-color);
+}
+
+.primary-outline-btn:hover {
+	background-color: var(--primary-color-high-opacity);
+	color: var(--primary-color);
+}
