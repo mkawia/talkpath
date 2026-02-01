@@ -4,14 +4,22 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "DEV_PUSH=1 vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"db_just_push": "DEV_PUSH=1 drizzle-kit push --config src/lib/db/config/index.ts",
+		"db_push": "DEV_PUSH=1 tsx src/lib/db/seed/empty_db.ts && DEV_PUSH=1 drizzle-kit push --config src/lib/db/config/index.ts",
+		"db_just_seed": "DEV_PUSH=1 tsx src/lib/db/seed/index.ts",
+		"db_seed": "npm run db_push && npm run db_just_seed",
+		"db_just_push_prod": "drizzle-kit push --config src/lib/db/config/index.ts",
+		"db_push_prod": "tsx src/lib/db/seed/empty_db.ts && drizzle-kit push --config src/lib/db/config/index.ts",
+		"db_just_seed_prod": "tsx src/lib/db/seed/index.ts",
+		"db_seed_prod": "npm run db_push_prod && npm run db_just_seed_prod"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -19,7 +27,11 @@
 		"@sveltejs/adapter-vercel": "^6.2.0",
 		"@sveltejs/kit": "^2.49.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@types/bcrypt": "^6.0.0",
 		"@types/node": "^22",
+		"@types/pg": "^8.16.0",
+		"@types/uuid-validate": "^0.0.3",
+		"drizzle-kit": "^0.31.8",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.13.1",
@@ -28,12 +40,21 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"svelte": "^5.45.6",
 		"svelte-check": "^4.3.4",
+		"tsx": "^4.21.0",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.48.1",
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
 		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
-		"@fontsource-variable/syne": "^5.2.7"
+		"@fontsource-variable/syne": "^5.2.7",
+		"bcrypt": "^6.0.0",
+		"dayjs": "^1.11.19",
+		"decimal.js-light": "^2.5.1",
+		"dotenv": "^17.2.3",
+		"drizzle-orm": "^0.45.1",
+		"postgres": "^3.4.7",
+		"uuid-validate": "^0.0.3",
+		"zod": "^4.2.1"
 	}
 }

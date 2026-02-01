@@ -1,7 +1,6 @@
 <script lang="ts">
 	//import type { LayoutData } from './$types';
 	import type { Snippet } from 'svelte';
-	import { navigating } from '$app/state';
 
 	//css import are done here, a bit expensive(like for error pages) but still
 	import '$lib/styles/normalize.css';

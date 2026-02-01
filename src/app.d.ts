@@ -3,7 +3,11 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			db: import('drizzle-orm/postgres-js').PostgresJsDatabase;
+			//publicUserLogin: import('$lib/server/public_users/utils').PublicUserLogin | null;
+			internalUserLogin: import('$lib/server/internal_users/constants').InternalUserLogin | null;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

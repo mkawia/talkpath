@@ -1,42 +1,18 @@
-# sv
+# HerbAtlass
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+TalkPath is powerful app to help stroke patients with aphasia communicate better.
 
-## Creating a project
+## To run the sveltekit app in dev
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier eslint sveltekit-adapter="adapter:vercel" --install npm talkpath
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
+## set up database
 
-To create a production version of your app:
+create database talkpath_db;
+create user talkpath_app with encrypted password '123456';
+grant all privileges on database talkpath_db to talkpath_app;
 
-```sh
-npm run build
-```
+//this actually grants them all privileges on the database, in systems like debian; really sucks
+GRANT ALL ON SCHEMA public TO talkpath_app;
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

@@ -1,0 +1,10 @@
+DEV_DB_HOST="localhost"
+DEV_DB_DATABASE="talkpath_db"
+DEV_DB_USERNAME="talkpath_app"
+DEV_DB_PASSWORD="123456"
+
+PROD_DB_HOST="aws-1-us-east-2.pooler.supabase.com:6543"
+PROD_DB_DATABASE="postgres"
+PROD_DB_USERNAME="postgres.pbnyccinlaxvssrziely"
+PROD_DB_PASSWORD="kzP9aNEfU0Jn0wYO"
+
