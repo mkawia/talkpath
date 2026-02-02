@@ -1,4 +1,10 @@
-export const peopleAndStuffObject = {
+export const peopleAndStuffObject: {
+	[key: string]: {
+		name: string;
+		description: string;
+		category: string;
+	};
+} = {
 	/*
 	
 	people
@@ -17,7 +23,7 @@ export const peopleAndStuffObject = {
 	},
 	'3': {
 		name: 'Suedi',
-		description: 'Oldest Son and child',
+		description: 'Oldest child',
 		category: 'People'
 	},
 	'4': {

@@ -54,7 +54,7 @@ export const insertDefaultSwahiliWords = async (params: {
 	let allReturnObjects: {
 		key: string;
 		description: string;
-		createdBy: string;
+		createdBy: string | null;
 		isActive: boolean;
 		moreFields: unknown;
 		updatedAt: string;

@@ -1,4 +1,4 @@
-# HerbAtlass
+# TalkPath
 
 TalkPath is powerful app to help stroke patients with aphasia communicate better.
 

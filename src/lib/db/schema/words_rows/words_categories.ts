@@ -1,4 +1,4 @@
-import { pgTable, uuid, boolean, foreignKey } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, boolean, foreignKey, numeric } from 'drizzle-orm/pg-core';
 import { moreFieldsColumn, schemaTimestampsColumns } from '../columns.helpers';
 import { text } from 'drizzle-orm/pg-core';
 import { InternalUser } from '../internal_users/internal_users';
@@ -27,6 +27,7 @@ export const WordCategory = pgTable(
 		name: text('name').unique().notNull(),
 		description: text('description'),
 		createdBy: uuid('created_by').notNull(),
+		ranking: numeric('ranking', { mode: 'number' }).notNull().default(0),
 		isActive: boolean('is_active').notNull().default(true),
 		moreFields: moreFieldsColumn,
 		...schemaTimestampsColumns

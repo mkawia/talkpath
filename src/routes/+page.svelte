@@ -1,8 +1,21 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
 	import LandingEnteredWords from '$lib/partials/landing_entered_words/landing_entered_words.svelte';
 	import LandingHeader from '$lib/partials/landing_header/landing_header.svelte';
-	let inputText = $state('');
+	import LandingPageWordTree from '$lib/partials/landing_page_word_tree/landing_page_word_tree.svelte';
 
+	import { onMount } from 'svelte';
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+
+	const landingPageWordCategories = $derived(data.landingPageWordCategories);
+
+	let inputText = $state('');
 	let enteredWords = $state<string[]>([]);
 
 	const onEnterInputText = (submittedInputText: string) => {
@@ -18,6 +31,8 @@
 	<LandingHeader bind:inputText {onEnterInputText} />
 
 	<LandingEnteredWords bind:enteredWords />
+
+	<LandingPageWordTree {landingPageWordCategories} />
 </div>
 
 <style>

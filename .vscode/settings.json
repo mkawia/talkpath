@@ -8,6 +8,11 @@
     ".prettierignore": true,
     ".vscode": true,
     "node_modules": true,
-    ".vercel": true
-  }
-}
+    ".vercel": true,
+    "envexample": true,
+    ".env": true,
+    "eslint.config.js": true,
+    "tsconfig.json": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}}
