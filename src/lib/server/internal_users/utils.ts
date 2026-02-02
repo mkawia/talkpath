@@ -70,6 +70,7 @@ export const makeInternalUserPasswordHash = async (password: string) => {
 	return hashed;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function checkIfEmailUniqueError(err: any) {
 	try {
 		const errorsList = JSON.parse(JSON.stringify(err.errors));

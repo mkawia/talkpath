@@ -25,7 +25,8 @@ export const WordRow = pgTable(
 	'words_rows',
 	{
 		key: uuid('key').primaryKey().notNull(),
-		text: text('text').unique().notNull(),
+		//no longer unique to allow same word in different languages or contexts
+		text: text('text').notNull(),
 		description: text('description').notNull(),
 		createdBy: uuid('created_by').notNull(),
 		isActive: boolean('is_active').notNull().default(true),
