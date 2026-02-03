@@ -62,7 +62,7 @@
 
 		:global(.landing-header-logo-w svg.landing-header-logo-mobile-svg) {
 			display: block;
-			height: 36px;
+			height: 24px;
 			width: auto;
 		}
 	}

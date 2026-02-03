@@ -79,7 +79,7 @@
 
 		/* Colors & Borders - Default State */
 		background-color: var(--talkpath-white);
-		border: 2px solid var(--primary-color);
+		border: 2px solid var(--border-color);
 		border-bottom-width: 4px; /* Thicker bottom for 3D feel without shadow */
 
 		/* Layout */
