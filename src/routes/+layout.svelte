@@ -14,7 +14,7 @@
 
 	interface Props {
 		//data: LayoutData;
-		children?: Snippet
+		children?: Snippet;
 	}
 
 	let { children }: Props = $props();

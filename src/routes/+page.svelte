@@ -5,8 +5,6 @@
 	import LandingHeader from '$lib/partials/landing_header/landing_header.svelte';
 	import LandingPageWordTree from '$lib/partials/landing_page_word_tree/landing_page_word_tree.svelte';
 
-	import { onMount } from 'svelte';
-
 	interface Props {
 		data: PageData;
 	}

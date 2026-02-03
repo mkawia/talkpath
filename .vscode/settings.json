@@ -12,8 +12,10 @@
     "envexample": true,
     ".env": true,
     "eslint.config.js": true,
-    "tsconfig.json": true,
-    "svelte.config.js": true
+    "pnpm-lock.yaml": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

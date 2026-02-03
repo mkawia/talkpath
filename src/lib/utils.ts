@@ -586,3 +586,12 @@ export const getPasswordStrength = (input: string) => {
 
 //30 seconds
 export const timeToCheckIfStillThereInMs = 1000 * 30;
+
+//tailwind crap
+
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
+}

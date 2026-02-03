@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { LandingWordsTreeNode } from '$lib/server/words/fetch_landing_page_words_tree/fetch_landing_page_words_tree';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import LandingPageWordTreeNodeContent from './landing_page_word_tree_node_content.svelte';
 
 	interface Props {
 		categoryName: string;
@@ -14,9 +16,29 @@
 	}
 
 	let { categoryName, status, node }: Props = $props();
+
+	let showNodeWordsDialog = $state(false);
 </script>
 
-<button class="words-node" disabled={status === 'loading'} class:is-loading={status === 'loading'}>
+<Dialog.Root bind:open={showNodeWordsDialog}>
+	<Dialog.Content class="sm:max-w-200">
+		<!-- just in case -->
+		{#if node}
+			<LandingPageWordTreeNodeContent {node} />
+		{/if}
+	</Dialog.Content>
+</Dialog.Root>
+
+<button
+	class="words-node"
+	onclick={() => {
+		if (status === 'loaded' && node) {
+			showNodeWordsDialog = true;
+		}
+	}}
+	disabled={status === 'loading'}
+	class:is-loading={status === 'loading'}
+>
 	<div class="words-node-interior">
 		<div class="words-node-content">
 			<span class="category-name">{categoryName}</span>
