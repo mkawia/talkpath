@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
+	import LandingEnteredWordsMake from './landing_entered_words_make.svelte';
 
 	interface Props {
 		enteredWords: {
@@ -15,7 +16,11 @@
 	}
 </script>
 
-<div class="entered-words-container">
+<div
+	class={enteredWords.length >= 2
+		? 'entered-words-container can-make-sentences'
+		: 'entered-words-container'}
+>
 	{#if enteredWords.length === 0}
 		<div class="empty-entered-words">
 			<span>Entered words will appear here.</span>
@@ -29,6 +34,10 @@
 				<button class="close-btn" onclick={() => removeWord(enteredWord.word)}>×</button>
 			</div>
 		{/each}
+
+		{#if enteredWords.length >= 2}
+			<LandingEnteredWordsMake {enteredWords} />
+		{/if}
 	{/if}
 </div>
 
@@ -38,6 +47,7 @@
 		display: inline-flex;
 		align-items: center;
 		margin: 0.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.word-pill {
@@ -75,6 +85,8 @@
 	}
 
 	.entered-words-container {
+		position: relative;
+
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.25rem;
@@ -83,7 +95,13 @@
 		margin-top: 0.5em;
 		width: 70%;
 		border-radius: var(--border-radius);
-		background-color: var(--lightest-primary-color);
+		border: 2px dashed var(--primary-color);
+
+		margin-top: 2rem;
+	}
+
+	.entered-words-container.can-make-sentences {
+		padding-bottom: 3em;
 	}
 
 	@media (max-width: 600px) {

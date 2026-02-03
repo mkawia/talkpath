@@ -94,6 +94,7 @@
 		padding: 3rem 0.25rem;
 		max-width: 1200px;
 		margin: 0 auto;
+		margin-top: 2rem;
 	}
 
 	/* Connecting lines logic simulation for larger screens */
