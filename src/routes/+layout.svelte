@@ -1,4 +1,6 @@
 <script lang="ts">
+	import './layout.css';
+
 	//import type { LayoutData } from './$types';
 	import type { Snippet } from 'svelte';
 
@@ -6,20 +8,17 @@
 	import '$lib/styles/normalize.css';
 
 	//these are now global
-
 	import '$lib/styles/typography.css';
+
 	import '$lib/styles/styles.css';
 
 	interface Props {
 		//data: LayoutData;
-		children?: Snippet;
+		children?: Snippet
 	}
 
 	let { children }: Props = $props();
 </script>
 
-<svelte:head>
-	<title>TalkPath</title>
-</svelte:head>
-
+<svelte:head><title>TalkPath</title></svelte:head>
 {@render children?.()}

@@ -12,7 +12,8 @@
     "envexample": true,
     ".env": true,
     "eslint.config.js": true,
-    "tsconfig.json": true
+    "tsconfig.json": true,
+    "svelte.config.js": true
   },
   "typescript.tsdk": "node_modules/typescript/lib"
-}}
+}
