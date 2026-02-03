@@ -37,7 +37,7 @@
 
 <div class="rolodex-container">
 	<!--make it bigger -->
-	<Input size="lg" type="text" bind:value={searchWord} placeholder="Search..." class="m-4" />
+	<Input type="text" bind:value={searchWord} placeholder="Search..." class="m-4" />
 
 	{#if filteredWords.length === 0}
 		<div class="empty-filtered-words">
@@ -88,6 +88,7 @@
 		border-bottom: 1px solid var(--muted-border-color);
 		font-size: 1.2rem;
 		color: var(--talkpath-text-gray);
+		cursor: pointer;
 	}
 
 	.rolodex-item:first-child {
@@ -96,6 +97,11 @@
 
 	:global(.highlighted-text-high) {
 		background-color: var(--lightest-primary-color);
+	}
+
+	.rolodex-item:hover {
+		background-color: var(--primary-color);
+		color: var(--talkpath-white);
 	}
 
 	.empty-filtered-words {
