@@ -69,6 +69,10 @@
 	});
 </script>
 
+<!--
+			
+
+-->
 <div class="bubbles-container">
 	{#each landingPageWordCategories as landingPageWordCategory}
 		<LandingPageWordTreeNode
@@ -94,7 +98,7 @@
 	@media (min-width: 768px) {
 		.bubbles-container {
 			position: relative;
-			padding-top: 4rem;
+			padding-top: 1rem;
 		}
 	}
 

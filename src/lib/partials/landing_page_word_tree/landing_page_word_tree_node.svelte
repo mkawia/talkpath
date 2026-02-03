@@ -57,7 +57,7 @@
 
 		/* Colors & Borders - Default State */
 		background-color: var(--talkpath-white);
-		border: 2px solid var(--muted-border-color);
+		border: 2px solid var(--primary-color);
 		border-bottom-width: 4px; /* Thicker bottom for 3D feel without shadow */
 
 		/* Layout */
@@ -84,7 +84,7 @@
 	.category-name {
 		font-size: 1rem;
 		font-weight: 700;
-		color: var(--talkpath-text-gray);
+		color: var(--primary-color);
 		text-align: center;
 		line-height: 1.3;
 		letter-spacing: 0.02em;
@@ -98,7 +98,7 @@
 
 	/* Loading State */
 	.words-node.is-loading {
-		pointer-events: none; /* Already disabled via attribute, but ensures no CSS triggers */
+		/*	pointer-events: none; */
 		cursor: not-allowed;
 	}
 
@@ -117,11 +117,9 @@
 	}
 
 	.words-node.is-loading .category-name {
-		border-radius: 4px;
-		user-select: none;
-		/* Create a 'skeleton' bar for text */
-		width: 70%;
-		height: 1rem;
+		opacity: 0.1;
+		cursor: not-allowed;
+		color: var(--talkpath-text-gray);
 	}
 
 	@keyframes shimmer {
