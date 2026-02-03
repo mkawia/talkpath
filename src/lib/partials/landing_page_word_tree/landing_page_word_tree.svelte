@@ -69,26 +69,38 @@
 	});
 </script>
 
-{#each landingPageWordCategories as landingPageWordCategory}
-	<LandingPageWordTreeNode
-		status={landingWordsTreeKV[landingPageWordCategory.key]?.status}
-		node={landingWordsTreeKV[landingPageWordCategory.key]?.node}
-	/>
+<div class="bubbles-container">
+	{#each landingPageWordCategories as landingPageWordCategory}
+		<LandingPageWordTreeNode
+			categoryName={landingPageWordCategory.name}
+			status={landingWordsTreeKV[landingPageWordCategory.key]?.status}
+			node={landingWordsTreeKV[landingPageWordCategory.key]?.node}
+		/>
+	{/each}
+</div>
 
-	<!--
-	<div class="landing-page-word-tree-category">
-		<h2>{landingPageWordCategory.name}</h2>
-		{#if landingWordsTreeKV[landingPageWordCategory.key]?.error}
-			<p class="error">Error: {landingWordsTreeKV[landingPageWordCategory.key].error}</p>
-		{:else if landingWordsTreeKV[landingPageWordCategory.key]?.node}
-			<pre>{JSON.stringify(
-					landingWordsTreeKV[landingPageWordCategory.key].node?.words.length,
-					null,
-					2
-				)}</pre>
-		{:else}
-			<p>Loading...</p>
-		{/if}
-	</div>
-	-->
-{/each}
+<style>
+	.bubbles-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		padding: 3rem 0.25rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	/* Connecting lines logic simulation for larger screens */
+	@media (min-width: 768px) {
+		.bubbles-container {
+			position: relative;
+			padding-top: 4rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.bubbles-container {
+			gap: 0.5rem;
+		}
+	}
+</style>

@@ -132,6 +132,16 @@ export const peopleAndStuffObject: {
 		description: 'going out',
 		category: 'Concepts/Maswala'
 	},
+	'23.1': {
+		name: 'Maumivu/pain',
+		description: 'describing pain',
+		category: 'Concepts/Maswala'
+	},
+	'23.2': {
+		name: 'Hunger/ njaa',
+		description: 'describing hunger',
+		category: 'Concepts/Maswala'
+	},
 
 	/*
 
@@ -153,6 +163,26 @@ export const peopleAndStuffObject: {
 	'26': {
 		name: 'Simu',
 		description: "Dad's simu",
+		category: 'Vitu'
+	},
+	'26.1': {
+		name: 'Food/Chakula',
+		description: 'Food/Chakula',
+		category: 'Vitu'
+	},
+	'26.2': {
+		name: 'Water/Maji',
+		description: 'Water/Maji',
+		category: 'Vitu'
+	},
+	'26.3': {
+		name: 'Medicine/Dawa',
+		description: 'Medicine/Dawa',
+		category: 'Vitu'
+	},
+	'26.4': {
+		name: 'Money/Pesa',
+		description: 'Money/Pesa',
 		category: 'Vitu'
 	},
 
@@ -191,6 +221,8 @@ export const peopleAndStuffObject: {
 		description: 'Mlandizi',
 		category: 'Places/Mahali'
 	},
+
+	//wards
 	'33': {
 		name: 'Azimio',
 		description: 'Azimio',
