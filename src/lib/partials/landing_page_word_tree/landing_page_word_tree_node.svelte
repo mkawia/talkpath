@@ -16,12 +16,11 @@
 	let { categoryName, status, node }: Props = $props();
 </script>
 
-<button class="words-node">
+<button class="words-node" disabled={status === 'loading'} class:is-loading={status === 'loading'}>
 	<div class="words-node-interior">
 		<div class="words-node-content">
 			<span class="category-name">{categoryName}</span>
 		</div>
-		<div class="status-indicator" class:loading={status === 'loading'}></div>
 	</div>
 </button>
 
@@ -97,43 +96,64 @@
 		transition: color 0.2s ease;
 	}
 
-	/* Decorative Status Indicator (Top bar) */
-	.status-indicator {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background-color: transparent;
-		transition: background-color 0.3s ease;
+	/* Loading State */
+	.words-node.is-loading {
+		pointer-events: none; /* Already disabled via attribute, but ensures no CSS triggers */
+		cursor: not-allowed;
 	}
 
-	.status-indicator.loading {
-		background-color: var(--warning-light-txt-color);
-		opacity: 0.5;
+	.words-node.is-loading .words-node-interior {
+		background-color: #f0f0f0;
+		border-color: #e0e0e0;
+		/* Shimmer effect background */
+		background: linear-gradient(
+			90deg,
+			var(--talkpath-white) 25%,
+			#f5f5f5 50%,
+			var(--talkpath-white) 75%
+		);
+		background-size: 200% 100%;
+		animation: shimmer 1.5s infinite linear;
 	}
 
-	/* Hover State */
-	.words-node:hover {
+	.words-node.is-loading .category-name {
+		border-radius: 4px;
+		user-select: none;
+		/* Create a 'skeleton' bar for text */
+		width: 70%;
+		height: 1rem;
+	}
+
+	@keyframes shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
+	}
+
+	/* Hover State (only when not loading) */
+	.words-node:not(.is-loading):hover {
 		transform: translateY(-2px);
 	}
 
-	.words-node:hover .words-node-interior {
+	.words-node:not(.is-loading):hover .words-node-interior {
 		border-color: var(--primary-color);
 		border-bottom-color: var(--primary-color);
 		background-color: var(--light-primary-color);
 	}
 
-	.words-node:hover .category-name {
+	.words-node:not(.is-loading):hover .category-name {
 		color: var(--talkpath-white);
 	}
 
-	/* Active/Click State */
-	.words-node:active {
+	/* Active/Click State (only when not loading) */
+	.words-node:not(.is-loading):active {
 		transform: translateY(1px);
 	}
 
-	.words-node:active .words-node-interior {
+	.words-node:not(.is-loading):active .words-node-interior {
 		border-color: var(--primary-color);
 		border-bottom-width: 2px; /* Press effect */
 		margin-top: 2px; /* Visual press offset */
