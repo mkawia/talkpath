@@ -6,9 +6,10 @@
 
 	interface Props {
 		landingPageWordCategories: { key: string; name: string; ranking: number }[];
+		onWordTapped: (wordParams: { key: string; word: string }) => void;
 	}
 
-	let { landingPageWordCategories }: Props = $props();
+	let { landingPageWordCategories, onWordTapped }: Props = $props();
 
 	let landingWordsTreeKV: {
 		[key: string]: {
@@ -79,6 +80,7 @@
 			categoryName={landingPageWordCategory.name}
 			status={landingWordsTreeKV[landingPageWordCategory.key]?.status}
 			node={landingWordsTreeKV[landingPageWordCategory.key]?.node}
+			{onWordTapped}
 		/>
 	{/each}
 </div>

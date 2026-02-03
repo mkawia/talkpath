@@ -11,9 +11,11 @@
 				text: string;
 			}[];
 		};
+		onWordTapped: (wordParams: { key: string; word: string }) => void;
+		closeWordsTreeNodeModal: () => void;
 	}
 
-	let { node }: Props = $props();
+	let { node, onWordTapped, closeWordsTreeNodeModal }: Props = $props();
 
 	let searchWord = $state('');
 
@@ -35,7 +37,7 @@
 	const filteredWords = $derived(makeFilteredWOrds(node.words, searchWord));
 </script>
 
-<div class="tree-node-complex-searcher-container">
+<div class="tree-node-naive-searcher-container">
 	<!--make it bigger -->
 	<Input type="text" bind:value={searchWord} placeholder="Search..." class="m-4" />
 
@@ -44,11 +46,17 @@
 			<p class="text-gray-500">No words found.</p>
 		</div>
 	{:else}
-		<div class="tree-node-complex-searcher-list">
+		<div class="tree-node-naive-searcher-list">
 			{#each filteredWords as word}
-				<div class="tree-node-complex-searcher-item">
+				<button
+					onclick={() => {
+						onWordTapped({ key: word.key, word: word.text });
+						closeWordsTreeNodeModal();
+					}}
+					class="tree-node-naive-searcher-item"
+				>
 					<!--
-					<span class="tree-node-complex-searcher-item-text">{word.text}</span>
+					<span class="tree-node-naive-searcher-item-text">{word.text}</span>
 					-->
 					<span class="highlighted-text">
 						{@html word.text.replace(
@@ -56,14 +64,14 @@
 							(match) => `<mark class="highlighted-text-high">${match}</mark>`
 						)}
 					</span>
-				</div>
+				</button>
 			{/each}
 		</div>
 	{/if}
 </div>
 
 <style>
-	.tree-node-complex-searcher-container {
+	.tree-node-naive-searcher-container {
 		margin-top: 20px;
 		display: flex;
 		flex-direction: column;
@@ -77,21 +85,24 @@
 		overflow-y: hidden;
 	}
 
-	.tree-node-complex-searcher-list {
+	.tree-node-naive-searcher-list {
 		flex: 1;
 		overflow-y: auto;
 		padding: 20px 0;
 	}
 
-	.tree-node-complex-searcher-item {
+	.tree-node-naive-searcher-item {
+		display: block;
+		width: 100%;
 		padding: 20px;
 		border-bottom: 1px solid var(--muted-border-color);
 		font-size: 1.2rem;
 		color: var(--talkpath-text-gray);
 		cursor: pointer;
+		text-align: left;
 	}
 
-	.tree-node-complex-searcher-item:first-child {
+	.tree-node-naive-searcher-item:first-child {
 		border-top: 1px solid var(--muted-border-color);
 	}
 
@@ -99,7 +110,7 @@
 		background-color: var(--lightest-primary-color);
 	}
 
-	.tree-node-complex-searcher-item:hover {
+	.tree-node-naive-searcher-item:hover {
 		background-color: var(--primary-color);
 		color: var(--talkpath-white);
 	}

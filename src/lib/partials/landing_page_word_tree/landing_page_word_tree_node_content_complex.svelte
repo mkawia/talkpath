@@ -15,9 +15,11 @@
 				text: string;
 			}[];
 		};
+		onWordTapped: (wordParams: { key: string; word: string }) => void;
+		closeWordsTreeNodeModal: () => void;
 	}
 
-	let { node }: Props = $props();
+	let { node, onWordTapped, closeWordsTreeNodeModal }: Props = $props();
 
 	let searchWord = $state('');
 
@@ -71,7 +73,13 @@
 	{:else}
 		<div class="rolodex-list">
 			{#each filteredWords as word (word.key)}
-				<div class="rolodex-item">
+				<button
+					onclick={() => {
+						onWordTapped({ key: word.key, word: word.text });
+						closeWordsTreeNodeModal();
+					}}
+					class="rolodex-item"
+				>
 					<span class="highlighted-text">
 						{#if searchWord}
 							{@html word.text.replace(
@@ -82,7 +90,7 @@
 							{word.text}
 						{/if}
 					</span>
-				</div>
+				</button>
 			{/each}
 		</div>
 	{/if}
@@ -109,11 +117,15 @@
 	}
 
 	.rolodex-item {
+		display: block;
+		width: 100%;
+
 		padding: 20px;
 		border-bottom: 1px solid var(--muted-border-color);
 		font-size: 1.2rem;
 		color: var(--talkpath-text-gray);
 		cursor: pointer;
+		text-align: left;
 	}
 
 	.rolodex-item:first-child {

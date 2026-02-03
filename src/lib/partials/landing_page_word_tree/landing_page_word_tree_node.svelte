@@ -13,18 +13,23 @@
 					errorBody: string;
 			  };
 		node: LandingWordsTreeNode | null;
+		onWordTapped: (wordParams: { key: string; word: string }) => void;
 	}
 
-	let { categoryName, status, node }: Props = $props();
+	let { categoryName, status, node, onWordTapped }: Props = $props();
 
 	let showNodeWordsDialog = $state(false);
+
+	const closeWordsTreeNodeModal = () => {
+		showNodeWordsDialog = false;
+	};
 </script>
 
 <Dialog.Root bind:open={showNodeWordsDialog}>
 	<Dialog.Content class="sm:max-w-200">
 		<!-- just in case -->
 		{#if node}
-			<LandingPageWordTreeNodeContent {node} />
+			<LandingPageWordTreeNodeContent {closeWordsTreeNodeModal} {node} {onWordTapped} />
 		{/if}
 	</Dialog.Content>
 </Dialog.Root>

@@ -2,13 +2,16 @@
 	import { scale } from 'svelte/transition';
 
 	interface Props {
-		enteredWords: string[];
+		enteredWords: {
+			word: string;
+			key: string;
+		}[];
 	}
 
 	let { enteredWords = $bindable() }: Props = $props();
 
 	function removeWord(word: string) {
-		enteredWords = enteredWords.filter((w) => w !== word);
+		enteredWords = enteredWords.filter((w) => w.word !== word);
 	}
 </script>
 
@@ -18,12 +21,12 @@
 			<span>Entered words will appear here.</span>
 		</div>
 	{:else}
-		{#each enteredWords as word (word)}
+		{#each enteredWords as enteredWord (enteredWord.word)}
 			<div transition:scale class="word-pill-container">
 				<div class="word-pill">
-					<span>{word}</span>
+					<span>{enteredWord.word}</span>
 				</div>
-				<button class="close-btn" onclick={() => removeWord(word)}>×</button>
+				<button class="close-btn" onclick={() => removeWord(enteredWord.word)}>×</button>
 			</div>
 		{/each}
 	{/if}

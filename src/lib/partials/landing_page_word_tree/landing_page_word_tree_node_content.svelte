@@ -14,13 +14,15 @@
 				text: string;
 			}[];
 		};
+		onWordTapped: (wordParams: { key: string; word: string }) => void;
+		closeWordsTreeNodeModal: () => void;
 	}
 
-	let { node }: Props = $props();
+	let { node, onWordTapped, closeWordsTreeNodeModal }: Props = $props();
 </script>
 
 {#if node.words.length > LIST_OF_WORD_TOO_LONG}
-	<LandingPageWordTreeNodeContentComplex {node} />
+	<LandingPageWordTreeNodeContentComplex {closeWordsTreeNodeModal} {node} {onWordTapped} />
 {:else}
-	<LandingPageWordTreeNodeContentNaive {node} />
+	<LandingPageWordTreeNodeContentNaive {closeWordsTreeNodeModal} {node} {onWordTapped} />
 {/if}

@@ -84,6 +84,9 @@ export const fetchLandingPageWordsTreeNode = async (params: {
 
 	const category = categoriesRows[0];
 
+	//sort words alphabetically by text
+	wordsForCategory.sort((a, b) => a.text.localeCompare(b.text));
+
 	// Construct and return the LandingWordsTreeNode
 	return {
 		categoryKey: category.key,

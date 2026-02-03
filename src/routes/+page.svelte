@@ -14,13 +14,51 @@
 	const landingPageWordCategories = $derived(data.landingPageWordCategories);
 
 	let inputText = $state('');
-	let enteredWords = $state<string[]>([]);
+	let enteredWords = $state<
+		{
+			word: string;
+			key: string;
+		}[]
+	>([]);
+
+	const enteredWordsHasWord = (
+		word: string,
+		enteredWordsPar: {
+			word: string;
+			key: string;
+		}[]
+	) => {
+		for (const enteredWordPar of enteredWordsPar) {
+			//if a word like it exists already
+			if (enteredWordPar.word === word) {
+				return true;
+			}
+		}
+		return false;
+	};
 
 	const onEnterInputText = (submittedInputText: string) => {
 		inputText = '';
 		//only enter unique, non-empty words
-		if (submittedInputText.trim() !== '' && !enteredWords.includes(submittedInputText.trim())) {
-			enteredWords.push(submittedInputText.trim());
+		if (
+			submittedInputText.trim() !== '' &&
+			!enteredWordsHasWord(submittedInputText.trim(), enteredWords)
+		) {
+			//we use empty since this a new word maybe
+			enteredWords.push({
+				word: submittedInputText.trim(),
+				key: ''
+			});
+		}
+	};
+
+	const onWordTapped = (wordParams: { key: string; word: string }) => {
+		//emptying just incase
+		inputText = '';
+
+		if (!enteredWordsHasWord(wordParams.word.trim(), enteredWords)) {
+			//we use empty since this a new word maybe
+			enteredWords.push(wordParams);
 		}
 	};
 </script>
@@ -30,7 +68,7 @@
 
 	<LandingEnteredWords bind:enteredWords />
 
-	<LandingPageWordTree {landingPageWordCategories} />
+	<LandingPageWordTree {onWordTapped} {landingPageWordCategories} />
 </div>
 
 <style>
