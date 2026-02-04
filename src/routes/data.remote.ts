@@ -54,6 +54,7 @@ export type MakeGeminiMakeSentencesFromWordsRes = {
 			| 'GEMINI_API_RESPONSE_TEXT_JSON_PARSE_ERROR'
 			| 'GEMINI_API_RESPONSE_PARSING_ERROR'
 			| 'GEMINI_API_SERVICE_UNAVAILABLE_503'
+			| 'GEMINI_API_SERVICE_UNAVAILABLE_429'
 			| 'GEMINI_API_GENERATE_CONTENT_ERROR';
 		//errObj: unknown;
 		errString: string;
@@ -151,6 +152,19 @@ const makeGeminiMakeSentencesFromWords = async (
 				error: {
 					errorType: 'GEMINI_API_SERVICE_UNAVAILABLE_503',
 					errString: errString,
+					responseText: null
+				}
+			};
+		}
+
+		//if 429
+		if (errString.includes('429')) {
+			return {
+				sentences: [],
+				fullPrompt: fullPrompt,
+				error: {
+					errorType: 'GEMINI_API_SERVICE_UNAVAILABLE_429',
+					errString: 'Rate limit exceeded (429)',
 					responseText: null
 				}
 			};

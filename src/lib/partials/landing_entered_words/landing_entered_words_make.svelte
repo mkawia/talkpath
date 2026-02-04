@@ -85,6 +85,7 @@
 				| 'GEMINI_API_RESPONSE_TEXT_JSON_PARSE_ERROR'
 				| 'GEMINI_API_RESPONSE_PARSING_ERROR'
 				| 'GEMINI_API_SERVICE_UNAVAILABLE_503'
+				| 'GEMINI_API_SERVICE_UNAVAILABLE_429'
 				| 'GEMINI_API_GENERATE_CONTENT_ERROR';
 			//errObj: unknown;
 			errString: string;
@@ -111,6 +112,10 @@
 				case 'GEMINI_API_SERVICE_UNAVAILABLE_503':
 					message =
 						'Sorry, the Gemini API service is currently unavailable (503). Please try again later.';
+					break;
+				case 'GEMINI_API_SERVICE_UNAVAILABLE_429':
+					message =
+						'Sorry, the Gemini API service is currently unavailable (429 - Too Many Requests). Please try again later.';
 					break;
 				case 'GEMINI_API_GENERATE_CONTENT_ERROR':
 					message =
