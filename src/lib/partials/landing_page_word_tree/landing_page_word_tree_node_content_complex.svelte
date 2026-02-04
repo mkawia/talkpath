@@ -36,7 +36,7 @@
 
 		// We use a classic for-loop for maximum speed and the ability to 'break'
 		for (let i = 0; i < node.words.length; i++) {
-			if (node.words[i].text.toLowerCase().includes(query)) {
+			if (node.words[i].text.toLowerCase().startsWith(query)) {
 				matches.push(node.words[i]);
 			}
 			// Stop immediately once we reach our DOM limit

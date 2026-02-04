@@ -10,7 +10,6 @@
     "node_modules": true,
     ".vercel": true,
     "envexample": true,
-    ".env": true,
     "eslint.config.js": true,
     "pnpm-lock.yaml": true
   },
