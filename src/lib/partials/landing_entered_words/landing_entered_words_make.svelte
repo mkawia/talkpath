@@ -174,7 +174,11 @@
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 		<AlertDialog.Footer>
-			<AlertDialog.Action>Ok</AlertDialog.Action>
+			<AlertDialog.Action
+				onclick={() => {
+					errorGeneratingSentencesModalIsOpen = false;
+				}}>Ok</AlertDialog.Action
+			>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>
